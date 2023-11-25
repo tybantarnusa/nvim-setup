@@ -35,4 +35,7 @@ return require('packer').startup(function(use)
 		  'nvim-tree/nvim-web-devicons', -- optional
 	  },
   }
+  use 'vim-airline/vim-airline'
+  use 'vim-airline/vim-airline-themes'
+  use 'preservim/tagbar'
 end)

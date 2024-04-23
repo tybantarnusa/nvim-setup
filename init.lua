@@ -18,3 +18,5 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>go", ":DiffviewOpen<CR>")
 vim.keymap.set("n", "<leader>gc", ":DiffviewClose<CR>")
 vim.keymap.set("n", "<C-f>", ":!gofmt -w %<CR><CR>:e<CR>")
+
+vim.g.airline_powerline_fonts = 1

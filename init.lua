@@ -13,6 +13,11 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 vim.opt.scrolloff = 10
 
+vim.opt.foldmethod = "indent"
+
+vim.cmd("autocmd BufRead * normal zR")
+
+
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>go", ":DiffviewOpen<CR>")

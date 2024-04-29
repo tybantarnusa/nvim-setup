@@ -14,9 +14,7 @@ vim.opt.wrap = false
 vim.opt.scrolloff = 10
 
 vim.opt.foldmethod = "indent"
-
-vim.cmd("autocmd BufRead * normal zR")
-
+vim.opt.foldlevel = 99
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

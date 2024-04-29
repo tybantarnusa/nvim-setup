@@ -27,3 +27,5 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fs', function()
     builtin.grep_string({ search = vim.fn.input("Search in files: ") })
 end)
+
+vim.api.nvim_create_autocmd("FileType", { pattern = "TelescopeResults", command = [[setlocal nofoldenable]] })

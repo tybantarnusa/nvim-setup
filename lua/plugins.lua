@@ -47,7 +47,6 @@ return require('packer').startup(function(use)
             require("trim").setup({})
         end
     })
-    use 'Exafunction/codeium.vim'
     use 'f-person/git-blame.nvim'
     use {
         "nvim-telescope/telescope-file-browser.nvim",
@@ -56,7 +55,21 @@ return require('packer').startup(function(use)
     use({
         "stevearc/oil.nvim",
         config = function()
-            require("oil").setup()
+            require("oil").setup({})
         end,
     })
+    use "onsails/lspkind.nvim"
+    use {
+        'Exafunction/codeium.vim',
+        commit = "8d4e845f125731d2de7c3036ea83f4be031c4340",
+        config = function()
+            -- Change '<C-g>' here to any keycode you like.
+            vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+            vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end,
+                { expr = true, silent = true })
+            vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end,
+                { expr = true, silent = true })
+            vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+        end
+    }
 end)

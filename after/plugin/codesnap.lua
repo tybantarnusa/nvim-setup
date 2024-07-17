@@ -1,0 +1,3 @@
+require("codesnap").setup({
+  watermark = ""
+})

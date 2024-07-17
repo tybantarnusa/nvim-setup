@@ -61,7 +61,7 @@ return require('packer').startup(function(use)
     use "onsails/lspkind.nvim"
     use {
         'Exafunction/codeium.vim',
-        commit = "8d4e845f125731d2de7c3036ea83f4be031c4340",
+        -- commit = "8d4e845f125731d2de7c3036ea83f4be031c4340",
         config = function()
             -- Change '<C-g>' here to any keycode you like.
             vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
@@ -72,4 +72,5 @@ return require('packer').startup(function(use)
             vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
         end
     }
+    use {'mistricky/codesnap.nvim', run = 'make'}
 end)

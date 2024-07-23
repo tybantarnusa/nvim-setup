@@ -22,6 +22,7 @@ vim.keymap.set("n", "<leader>go", ":DiffviewOpen<CR>")
 vim.keymap.set("n", "<leader>gc", ":DiffviewClose<CR>")
 vim.keymap.set("n", "<leader>]", ":e %:h<CR>")
 vim.keymap.set("n", "<C-f>", ":!gofmt -w %<CR><CR>:e<CR>")
+vim.keymap.set("n", "<leader>b", ':lua require("buffer_manager.ui").toggle_quick_menu()<CR>')
 
 vim.g.airline_powerline_fonts = 1
 

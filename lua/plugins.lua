@@ -75,4 +75,9 @@ return require('packer').startup(function(use)
     use { 'mistricky/codesnap.nvim', run = 'make' }
     use 'j-morano/buffer_manager.nvim'
     use 'karb94/neoscroll.nvim'
+    use {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {}
+    }
 end)

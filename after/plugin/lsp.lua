@@ -31,9 +31,7 @@ lspconfig.tsserver.setup {
 --}
 
 require("mason").setup()
-require("mason-lspconfig").setup {
-    ensure_installed = { "gopls", "tsserver", "lua_ls", "pyright", "cmake" },
-}
+require("mason-lspconfig").setup {}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

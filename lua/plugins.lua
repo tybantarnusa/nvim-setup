@@ -72,7 +72,7 @@ return require('packer').startup(function(use)
             vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
         end
     }
-    use { 'mistricky/codesnap.nvim', run = 'make' }
+    -- use { 'mistricky/codesnap.nvim', run = 'make' }
     use 'j-morano/buffer_manager.nvim'
     use 'karb94/neoscroll.nvim'
     use {

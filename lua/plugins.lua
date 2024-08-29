@@ -81,4 +81,11 @@ return require('packer').startup(function(use)
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {}
     }
+    use 'mfussenegger/nvim-dap'
+    use 'leoluz/nvim-dap-go'
+    use {
+        "rcarriga/nvim-dap-ui",
+        requires = { "mfussenegger/nvim-dap" }
+    }
+    use 'nvim-neotest/nvim-nio'
 end)

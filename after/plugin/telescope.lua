@@ -21,7 +21,7 @@ telescope.setup {
 telescope.load_extension "file_browser"
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<CR><ESC>', {})
+-- vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<CR><ESC>', {})
 vim.keymap.set('n', '<leader>fa', ':Telescope git_files<CR>', {})
 vim.keymap.set('n', '<leader>fe', ':Telescope diagnostics<CR>', {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})

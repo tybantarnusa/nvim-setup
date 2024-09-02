@@ -72,3 +72,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end, opts)
     end,
 })
+
+local todo_comments = require("todo-comments")
+todo_comments.setup {
+    keywords = {
+        TODO = { icon = " ", color = "warning" },
+    }
+}

@@ -76,11 +76,6 @@ return require('packer').startup(function(use)
     use { 'mistricky/codesnap.nvim', run = 'make' }
     use 'j-morano/buffer_manager.nvim'
     use 'karb94/neoscroll.nvim'
-    use {
-        "folke/todo-comments.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {}
-    }
     use 'mfussenegger/nvim-dap'
     use 'leoluz/nvim-dap-go'
     use {
@@ -88,4 +83,8 @@ return require('packer').startup(function(use)
         requires = { "mfussenegger/nvim-dap" }
     }
     use 'nvim-neotest/nvim-nio'
+    use {
+        "folke/todo-comments.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+    }
 end)

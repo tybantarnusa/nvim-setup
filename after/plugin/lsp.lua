@@ -1,16 +1,16 @@
 -- Setup language servers.
 local lspconfig = require('lspconfig')
-lspconfig.gopls.setup {
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
-            },
-            staticcheck = true,
-            gofumpt = true,
-        },
-    },
-}
+-- lspconfig.gopls.setup {
+--     settings = {
+--         gopls = {
+--             analyses = {
+--                 unusedparams = true,
+--             },
+--             staticcheck = true,
+--             gofumpt = true,
+--         },
+--     },
+-- }
 
 lspconfig.tsserver.setup {
     init_options = {
@@ -21,9 +21,9 @@ lspconfig.tsserver.setup {
     }
 }
 
--- lspconfig.pyright.setup {}
+lspconfig.pyright.setup {}
 -- lspconfig.tsserver.setup {}
--- lspconfig.rust_analyzer.setup {
+lspconfig.rust_analyzer.setup {}
 -- Server-specific settings. See `:help lspconfig-setup`
 -- settings = {
 --  ['rust-analyzer'] = {},

@@ -1,5 +1,6 @@
--- Setup language servers.
+require("mason").setup()
 local lspconfig = require('lspconfig')
+
 lspconfig.gopls.setup {
     settings = {
         gopls = {
@@ -12,14 +13,12 @@ lspconfig.gopls.setup {
     },
 }
 
-lspconfig.tsserver.setup {
-    init_options = {
-        preferences = {
-            importModuleSpecifierPreference = "relative",
-            importModuleSpecifierEnding = "minimal",
-        }
-    }
-}
+-- lspconfig.ts_ls.setup {
+--     init_options = {
+--             importModuleSpecifierEnding = "minimal",
+--         }
+--     }
+-- }
 
 -- lspconfig.pyright.setup {}
 -- lspconfig.tsserver.setup {}
@@ -32,7 +31,7 @@ lspconfig.tsserver.setup {
 
 require("mason").setup()
 require("mason-lspconfig").setup {
-    ensure_installed = { "gopls", "tsserver", "lua_ls", "pyright", "cmake" },
+    ensure_installed = { "gopls", "ts_ls", "lua_ls", "pyright" },
 }
 
 -- Global mappings.

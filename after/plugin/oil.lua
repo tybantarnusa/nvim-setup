@@ -14,8 +14,30 @@ local function get_oil_dir()
   end
 end
 
-oil.setup()
+oil.setup({
+    columns = {
+        "icon", -- Display file icons
+        "size", -- Display file size
+        "mtime", -- Display last modified time
+    },
+    view_options = {
+        show_hidden = true, -- Show hidden files
+    },
+    float = {
+        preview_split = "right",
+        win_options = {
+            winblend = 10,
+        },
+    },
+})
 
-vim.keymap.set("n", "<leader>]", function()
-  oil.open(get_oil_dir())
-end, { desc = "Open Oil in dynamic directory" })
+vim.keymap.set("n", "<leader><leader>", function()
+  -- Check if Oil is currently open in the current window
+  local current_buf = vim.api.nvim_get_current_buf()
+  local buf_type = vim.api.nvim_buf_get_option(current_buf, "filetype")
+  if buf_type == "oil" then
+    oil.close() -- Close Oil if it's open
+  else
+    oil.open_float(get_oil_dir()) -- Open Oil if it's not
+  end
+end, { desc = "Toggle Oil in dynamic directory" })

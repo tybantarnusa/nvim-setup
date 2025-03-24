@@ -5,7 +5,16 @@ require('dap-go').setup({
             name = 'Debug',
             request = 'launch',
             mode = 'debug',
-            program = '${fileDirname}',
+            program = function()
+                local current_file = vim.fn.expand('%:p')
+                local cwd = vim.fn.getcwd()
+                local root_dir = vim.fs.dirname(vim.fs.find({'main.go'}, {
+                    upward = true,
+                    stop = vim.loop.os_homedir(),
+                    path = vim.fn.fnamemodify(current_file, ':h'),
+                })[1] or cwd)
+                return root_dir
+            end,
             env = vim.fn.environ(),
         },
     },

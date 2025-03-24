@@ -1,4 +1,4 @@
--- Setup language servers.
+require("mason").setup()
 local lspconfig = require('lspconfig')
 -- lspconfig.gopls.setup {
 --     settings = {
@@ -12,7 +12,7 @@ local lspconfig = require('lspconfig')
 --     },
 -- }
 
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
     init_options = {
         preferences = {
             importModuleSpecifierPreference = "relative",
@@ -70,3 +70,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end, opts)
     end,
 })
+
+local todo_comments = require("todo-comments")
+todo_comments.setup {
+    keywords = {
+        TODO = { icon = " ", color = "warning" },
+    }
+}

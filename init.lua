@@ -18,12 +18,9 @@ vim.opt.foldlevel = 99
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("n", "<leader>go", ":DiffviewOpen<CR>")
-vim.keymap.set("n", "<leader>gc", ":DiffviewClose<CR>")
-vim.keymap.set("n", "<leader>]", ":e %:h<CR>")
-vim.keymap.set("n", "<C-f>", ":!gofmt -w %<CR><CR>:e<CR>")
-vim.keymap.set("n", "<leader>b", ':lua require("buffer_manager.ui").toggle_quick_menu()<CR>')
+vim.keymap.set("n", "<leader>go", "<cmd>DiffviewOpen<CR>")
+vim.keymap.set("n", "<leader>gc", "<cmd>DiffviewClose<CR>")
+-- vim.keymap.set("n", "<leader>]", "<cmd>e %:h<CR>")
+vim.keymap.set("n", "<leader>fb", '<cmd>lua require("buffer_manager.ui").toggle_quick_menu()<CR>')
 
 vim.g.airline_powerline_fonts = 1
-
-require("oil").setup()

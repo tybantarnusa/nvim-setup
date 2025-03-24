@@ -24,6 +24,6 @@ require("nvim-tree").setup({
   },
 })
 
-vim.keymap.set('n', '<leader><leader>', ':NvimTreeToggle<cr>', defaults)
+-- vim.keymap.set('n', '<leader><leader>', '<cmd>NvimTreeToggle<cr>', defaults)
 vim.keymap.set('n', '<C-,>', '<C-w><Left>', defaults)
 vim.keymap.set('n', '<C-.>', '<C-w><Right>', defaults)

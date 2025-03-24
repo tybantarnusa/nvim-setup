@@ -66,19 +66,25 @@ return require('packer').startup(function(use)
         config = function()
             -- Change '<C-g>' here to any keycode you like.
             vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
-            vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end,
-                { expr = true, silent = true })
-            vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end,
-                { expr = true, silent = true })
+            -- vim.keymap.set('i', '<M-;>', function() return vim.fn['codeium#CycleCompletions'](1) end,
+            --     { expr = true, silent = true })
+            -- vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end,
+            --     { expr = true, silent = true })
             vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
         end
     }
     -- use { 'mistricky/codesnap.nvim', run = 'make' }
     use 'j-morano/buffer_manager.nvim'
     use 'karb94/neoscroll.nvim'
+    use 'mfussenegger/nvim-dap'
+    use 'leoluz/nvim-dap-go'
+    use {
+        "rcarriga/nvim-dap-ui",
+        requires = { "mfussenegger/nvim-dap" }
+    }
+    use 'nvim-neotest/nvim-nio'
     use {
         "folke/todo-comments.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {}
+        requires = { "nvim-lua/plenary.nvim" },
     }
 end)

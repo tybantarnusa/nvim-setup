@@ -4,7 +4,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'pyright', 'lua_ls', 'tsserver', 'gopls' }
+local servers = { 'pyright', 'lua_ls', 'ts_ls', 'gopls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
@@ -24,6 +24,7 @@ cmp.setup {
       luasnip.lsp_expand(args.body)
     end,
   },
+  preselect = cmp.PreselectMode.Item,
   mapping = cmp.mapping.preset.insert({
     ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
     ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down

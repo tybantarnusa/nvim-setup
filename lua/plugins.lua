@@ -87,4 +87,33 @@ return require('packer').startup(function(use)
         "folke/todo-comments.nvim",
         requires = { "nvim-lua/plenary.nvim" },
     }
+    use {
+        'Bekaboo/dropbar.nvim',
+        requires = {
+            'nvim-telescope/telescope-fzf-native.nvim',
+            run = 'make'
+        },
+        config = function()
+            local dropbar_api = require('dropbar.api')
+            vim.keymap.set('n', '<Leader>;', dropbar_api.pick, { desc = 'Pick symbols in winbar' })
+            vim.keymap.set('n', '[;', dropbar_api.goto_context_start, { desc = 'Go to start of current context' })
+            vim.keymap.set('n', '];', dropbar_api.select_next_context, { desc = 'Select next context' })
+        end
+    }
+    use {
+        'nvimdev/dashboard-nvim',
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup {
+                theme = 'hyper',
+                config = {
+                    week_header = {
+                        enable = true,
+                    },
+                },
+                shortcut = {},
+            }
+        end,
+        requires = { 'nvim-tree/nvim-web-devicons' }
+    }
 end)

@@ -8,7 +8,19 @@ telescope.setup {
             file_ignore_patterns = {
                 "node_modules", ".git"
             }
-        }
+        },
+        live_grep = {
+            vimgrep_arguments = {
+                'rg',
+                '--color=never',
+                '--no-heading',
+                '--with-filename',
+                '--line-number',
+                '--column',
+                '--smart-case',
+                '-g', '!*.spec.ts', -- Excludes .spec.ts files
+            },
+        },
     },
     extensions = {
         file_browser = {

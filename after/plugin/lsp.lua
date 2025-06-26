@@ -13,12 +13,14 @@ lspconfig.gopls.setup {
     },
 }
 
--- lspconfig.ts_ls.setup {
---     init_options = {
---             importModuleSpecifierEnding = "minimal",
---         }
---     }
--- }
+lspconfig.ts_ls.setup {
+    init_options = {
+        preferences = {
+            importModuleSpecifierPreference = "relative",
+            importModuleSpecifierEnding = "minimal",
+        }
+    }
+}
 
 -- lspconfig.pyright.setup {}
 -- lspconfig.tsserver.setup {}

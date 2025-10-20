@@ -1,28 +1,38 @@
 require("mason").setup()
-local lspconfig = require('lspconfig')
+local lspconfig = vim.lsp.config
 
-lspconfig.gopls.setup {
+lspconfig('gopls', {
     settings = {
         gopls = {
             analyses = {
+                ST1000 = false,
+                ST1003 = false,
                 unusedparams = true,
             },
             staticcheck = true,
             gofumpt = true,
         },
     },
-}
+})
 
-lspconfig.ts_ls.setup {
+lspconfig('ts_ls', {
     init_options = {
         preferences = {
             importModuleSpecifierPreference = "relative",
             importModuleSpecifierEnding = "minimal",
         }
     }
-}
+})
 
--- lspconfig.pyright.setup {}
+lspconfig('pyright', {
+    settings = {
+        python = {
+            analysis = {
+                typeCheckingMode = "off",
+            }
+        }
+    }
+})
 -- lspconfig.tsserver.setup {}
 -- lspconfig.rust_analyzer.setup {
 -- Server-specific settings. See `:help lspconfig-setup`
@@ -33,7 +43,7 @@ lspconfig.ts_ls.setup {
 
 require("mason").setup()
 require("mason-lspconfig").setup {
-    ensure_installed = { "gopls", "ts_ls", "lua_ls", "pyright" },
+    ensure_installed = { "gopls", "lua_ls", "pyright" },
 }
 
 -- Global mappings.

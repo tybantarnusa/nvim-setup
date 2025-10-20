@@ -1,15 +1,15 @@
--- Add additional capabilities supported by nvim-cmp
+-- Add additional capabilities supported by nvim-cmpautop
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local lspconfig = require('lspconfig')
+local lspconfig = vim.lsp.config
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = { 'pyright', 'lua_ls', 'ts_ls', 'gopls' }
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+  lspconfig('lsp', {
     -- on_attach = my_custom_on_attach,
     capabilities = capabilities,
-  }
+  })
 end
 
 -- luasnip setup
@@ -23,6 +23,13 @@ cmp.setup {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
+  },
+  sorting = {
+    comparators = {
+      cmp.config.compare.exact,  -- Prioritize exact matches
+      cmp.config.compare.score,  -- Then score-based
+      cmp.config.compare.kind,   -- Then by kind (e.g., function vs. variable)
+    },
   },
   preselect = cmp.PreselectMode.Item,
   mapping = cmp.mapping.preset.insert({

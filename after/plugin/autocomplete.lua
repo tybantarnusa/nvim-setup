@@ -26,12 +26,16 @@ cmp.setup {
   },
   sorting = {
     comparators = {
-      cmp.config.compare.exact,  -- Prioritize exact matches
-      cmp.config.compare.score,  -- Then score-based
-      cmp.config.compare.kind,   -- Then by kind (e.g., function vs. variable)
+      cmp.config.compare.offset,        -- Prioritize items closer to cursor
+      cmp.config.compare.exact,         -- Exact matches
+      cmp.config.compare.score,         -- Score-based sorting
+      cmp.config.compare.recently_used, -- Prioritize recently used items
+      cmp.config.compare.locality,      -- Items closer in scope
+      cmp.config.compare.kind,          -- Sort by kind (e.g., function vs variable)
+      cmp.config.compare.sort_text,     -- Alphabetical sorting as fallback
     },
   },
-  preselect = cmp.PreselectMode.Item,
+  preselect = cmp.PreselectMode.None,
   mapping = cmp.mapping.preset.insert({
     ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
     ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down

@@ -29,6 +29,7 @@ oil.setup({
             winblend = 10,
         },
     },
+    skip_confirm_for_simple_edits = true,
 })
 
 vim.keymap.set("n", "<leader><leader>", function()

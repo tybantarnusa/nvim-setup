@@ -24,3 +24,12 @@ vim.keymap.set("n", "<leader>gc", "<cmd>DiffviewClose<CR>")
 vim.keymap.set("n", "<leader>fb", '<cmd>lua require("buffer_manager.ui").toggle_quick_menu()<CR>')
 
 vim.g.airline_powerline_fonts = 1
+
+local uv = vim.uv
+vim.api.nvim_create_autocmd({ 'VimEnter', 'VimLeave' }, {
+	callback = function()
+		if vim.env.TMUX_PLUGIN_MANAGER_PATH then
+			uv.spawn(vim.env.TMUX_PLUGIN_MANAGER_PATH .. '/tmux-window-name/scripts/rename_session_windows.py', {})
+		end
+	end,
+})

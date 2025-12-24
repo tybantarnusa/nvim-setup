@@ -27,15 +27,29 @@ require("mason-lspconfig").setup {
             vim.lsp.enable("gopls")
         end,
         ["ts_ls"] = function()
-            vim.lsp.config("tsserver", {
+            vim.lsp.config("ts_ls", {
                 init_options = {
                     preferences = {
                         importModuleSpecifierPreference = "relative",
                         importModuleSpecifierEnding = "minimal",
                     },
                 },
+                settings = {
+                    javascript = {
+                        suggest = {
+                            completeFunctionCalls = true,
+                            deprecated = true,
+                        },
+                    },
+                    typescript = {
+                        suggest = {
+                            completeFunctionCalls = true,
+                            deprecated = true,
+                        },
+                    },
+                },
             })
-            vim.lsp.enable("tsserver")
+            vim.lsp.enable("ts_ls")
         end,
         ["pyright"] = function()
             vim.lsp.config("pyright", {

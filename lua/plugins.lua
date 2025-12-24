@@ -116,4 +116,5 @@ return require('packer').startup(function(use)
         end,
         requires = { 'nvim-tree/nvim-web-devicons' }
     }
+    use { "scottmckendry/cyberdream.nvim" }
 end)

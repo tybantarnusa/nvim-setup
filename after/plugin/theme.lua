@@ -30,5 +30,12 @@ require('kanagawa').setup({
         }
     end,
 })
-vim.cmd.colorscheme "kanagawa-wave"
+-- vim.cmd.colorscheme "kanagawa-wave"
 vim.cmd.AirlineTheme "dark"
+
+require("cyberdream").setup({
+    transparent = true
+})
+vim.cmd.colorscheme "cyberdream"
+vim.api.nvim_set_hl(0, 'Search', { bg = '#444444' }) -- Dark gray background
+vim.api.nvim_set_hl(0, 'IncSearch', { bg = '#666666' }) -- Medium gray

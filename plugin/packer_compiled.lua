@@ -110,13 +110,19 @@ _G.packer_plugins = {
     path = "/home/user/.local/share/nvim/site/pack/packer/start/codesnap.nvim",
     url = "https://github.com/mistricky/codesnap.nvim"
   },
+  ["cursor-agent.nvim"] = {
+    config = { "\27LJ\2\nj\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\25use_default_mappings\2\22show_help_on_open\2\nsetup\17cursor-agent\frequire\0" },
+    loaded = true,
+    path = "/home/user/.local/share/nvim/site/pack/packer/start/cursor-agent.nvim",
+    url = "https://github.com/Sarctiann/cursor-agent.nvim"
+  },
   ["cyberdream.nvim"] = {
     loaded = true,
     path = "/home/user/.local/share/nvim/site/pack/packer/start/cyberdream.nvim",
     url = "https://github.com/scottmckendry/cyberdream.nvim"
   },
   ["dashboard-nvim"] = {
-    config = { "\27LJ\2\n«\1\0\0\5\0\t\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\3=\3\a\0024\3\0\0=\3\b\2B\0\2\1K\0\1\0\rshortcut\vconfig\16week_header\1\0\1\16week_header\0\1\0\1\venable\2\1\0\3\vconfig\0\rshortcut\0\ntheme\nhyper\nsetup\14dashboard\frequire\0" },
+    config = { "\27LJ\2\n«\1\0\0\5\0\t\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\3=\3\a\0024\3\0\0=\3\b\2B\0\2\1K\0\1\0\rshortcut\vconfig\16week_header\1\0\1\16week_header\0\1\0\1\venable\2\1\0\3\rshortcut\0\ntheme\nhyper\vconfig\0\nsetup\14dashboard\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -225,6 +231,11 @@ _G.packer_plugins = {
     path = "/home/user/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["snacks.nvim"] = {
+    loaded = true,
+    path = "/home/user/.local/share/nvim/site/pack/packer/start/snacks.nvim",
+    url = "https://github.com/folke/snacks.nvim"
+  },
   tagbar = {
     loaded = true,
     path = "/home/user/.local/share/nvim/site/pack/packer/start/tagbar",
@@ -288,18 +299,22 @@ time([[Defining packer_plugins]], false)
 time([[Config for oil.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\boil\frequire\0", "config", "oil.nvim")
 time([[Config for oil.nvim]], false)
+-- Config for: cursor-agent.nvim
+time([[Config for cursor-agent.nvim]], true)
+try_loadstring("\27LJ\2\nj\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\25use_default_mappings\2\22show_help_on_open\2\nsetup\17cursor-agent\frequire\0", "config", "cursor-agent.nvim")
+time([[Config for cursor-agent.nvim]], false)
 -- Config for: codeium.vim
 time([[Config for codeium.vim]], true)
 try_loadstring("\27LJ\2\n-\0\0\2\0\3\0\0046\0\0\0009\0\1\0009\0\2\0D\0\1\0\19codeium#Accept\afn\bvim,\0\0\2\0\3\0\0046\0\0\0009\0\1\0009\0\2\0D\0\1\0\18codeium#Clear\afn\bvimŒ\1\1\0\6\0\n\0\0176\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0003\4\5\0005\5\6\0B\0\5\0016\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\a\0003\4\b\0005\5\t\0B\0\5\1K\0\1\0\1\0\2\vsilent\2\texpr\2\0\n<c-x>\1\0\2\vsilent\2\texpr\2\0\n<C-g>\6i\bset\vkeymap\bvim\0", "config", "codeium.vim")
 time([[Config for codeium.vim]], false)
--- Config for: dropbar.nvim
-time([[Config for dropbar.nvim]], true)
-try_loadstring("\27LJ\2\nº\2\0\0\a\0\15\0\0286\0\0\0'\2\1\0B\0\2\0026\1\2\0009\1\3\0019\1\4\1'\3\5\0'\4\6\0009\5\a\0005\6\b\0B\1\5\0016\1\2\0009\1\3\0019\1\4\1'\3\5\0'\4\t\0009\5\n\0005\6\v\0B\1\5\0016\1\2\0009\1\3\0019\1\4\1'\3\5\0'\4\f\0009\5\r\0005\6\14\0B\1\5\1K\0\1\0\1\0\1\tdesc\24Select next context\24select_next_context\a];\1\0\1\tdesc#Go to start of current context\23goto_context_start\a[;\1\0\1\tdesc\27Pick symbols in winbar\tpick\14<Leader>;\6n\bset\vkeymap\bvim\16dropbar.api\frequire\0", "config", "dropbar.nvim")
-time([[Config for dropbar.nvim]], false)
 -- Config for: trim.nvim
 time([[Config for trim.nvim]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ttrim\frequire\0", "config", "trim.nvim")
 time([[Config for trim.nvim]], false)
+-- Config for: dropbar.nvim
+time([[Config for dropbar.nvim]], true)
+try_loadstring("\27LJ\2\nº\2\0\0\a\0\15\0\0286\0\0\0'\2\1\0B\0\2\0026\1\2\0009\1\3\0019\1\4\1'\3\5\0'\4\6\0009\5\a\0005\6\b\0B\1\5\0016\1\2\0009\1\3\0019\1\4\1'\3\5\0'\4\t\0009\5\n\0005\6\v\0B\1\5\0016\1\2\0009\1\3\0019\1\4\1'\3\5\0'\4\f\0009\5\r\0005\6\14\0B\1\5\1K\0\1\0\1\0\1\tdesc\24Select next context\24select_next_context\a];\1\0\1\tdesc#Go to start of current context\23goto_context_start\a[;\1\0\1\tdesc\27Pick symbols in winbar\tpick\14<Leader>;\6n\bset\vkeymap\bvim\16dropbar.api\frequire\0", "config", "dropbar.nvim")
+time([[Config for dropbar.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads

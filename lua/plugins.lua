@@ -48,7 +48,10 @@ return require('packer').startup(function(use)
             require("trim").setup({})
         end
     })
-    use 'f-person/git-blame.nvim'
+    use {
+        'f-person/git-blame.nvim',
+        branch = 'main',
+    }
     use {
         "nvim-telescope/telescope-file-browser.nvim",
         requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
@@ -117,4 +120,14 @@ return require('packer').startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons' }
     }
     use { "scottmckendry/cyberdream.nvim" }
+    use {
+        "Sarctiann/cursor-agent.nvim",
+        requires = { "folke/snacks.nvim" },
+        config = function()
+            require("cursor-agent").setup({
+                use_default_mappings = true,
+                show_help_on_open = true,
+            })
+        end
+    }
 end)

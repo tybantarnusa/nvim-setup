@@ -1,87 +1,81 @@
--- Mason setup (single call, moved to top)
+-- Mason setup
 require("mason").setup()
 
--- Mason-lspconfig to auto-install and enable servers
+-- Mason-lspconfig: auto-install servers
 require("mason-lspconfig").setup {
     ensure_installed = { "gopls", "lua_ls", "pyright", "ts_ls" },
-    handlers = {
-        -- Default handler: Enable all servers with nvim-lspconfig defaults
-        function(server_name)
-            vim.lsp.enable(server_name)
-        end,
-        -- Custom overrides for specific servers
-        ["gopls"] = function()
-            vim.lsp.config("gopls", {
-                settings = {
-                    gopls = {
-                        analyses = {
-                            ST1000 = false,
-                            ST1003 = false,
-                            unusedparams = true,
-                        },
-                        staticcheck = true,
-                        gofumpt = true,
-                    },
-                },
-            })
-            vim.lsp.enable("gopls")
-        end,
-        ["ts_ls"] = function()
-            vim.lsp.config("ts_ls", {
-                init_options = {
-                    preferences = {
-                        importModuleSpecifierPreference = "relative",
-                        importModuleSpecifierEnding = "minimal",
-                    },
-                },
-                settings = {
-                    javascript = {
-                        suggest = {
-                            completeFunctionCalls = true,
-                            deprecated = true,
-                        },
-                    },
-                    typescript = {
-                        suggest = {
-                            completeFunctionCalls = true,
-                            deprecated = true,
-                        },
-                    },
-                },
-            })
-            vim.lsp.enable("ts_ls")
-        end,
-        ["pyright"] = function()
-            vim.lsp.config("pyright", {
-                settings = {
-                    python = {
-                        analysis = {
-                            typeCheckingMode = "off",
-                        },
-                    },
-                },
-            })
-            vim.lsp.enable("pyright")
-        end,
-    },
 }
 
--- Global diagnostics and keymaps
-vim.diagnostic.config { -- Optional: Customize diagnostics
+-- Custom LSP configurations using the modern Neovim LSP API
+
+vim.lsp.config("gopls", {
+    settings = {
+        gopls = {
+            analyses = {
+                ST1000 = false,
+                ST1003 = false,
+                unusedparams = true,
+            },
+            staticcheck = true,
+            gofumpt = true,
+        },
+    },
+})
+
+vim.lsp.config("ts_ls", {
+    init_options = {
+        preferences = {
+            includeCompletionsForModuleExports = true,
+            includeCompletionsForImportStatements = true,
+            importModuleSpecifierPreference = "relative",
+            importModuleSpecifierEnding = "minimal",
+        },
+    },
+    settings = {
+        javascript = {
+            suggest = {
+                completeFunctionCalls = true,
+            },
+        },
+        typescript = {
+            suggest = {
+                completeFunctionCalls = true,
+            },
+        },
+    },
+})
+
+vim.lsp.config("pyright", {
+    settings = {
+        python = {
+            analysis = {
+                typeCheckingMode = "off",
+            },
+        },
+    },
+})
+
+-- Global diagnostics configuration
+vim.diagnostic.config({
     virtual_text = true,
     float = { border = "rounded" },
-}
+})
+
+-- Global diagnostic keymaps
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, { desc = "Diagnostics to loclist" })
 
--- LSP attach keymaps
+-- LSP attach keymaps and settings
 vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+    group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
     callback = function(ev)
-        vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc" -- Completion trigger
+        -- Enable omni completion powered by LSP
+        vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
         local opts = { buffer = ev.buf }
+
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -97,14 +91,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
         vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
         vim.keymap.set("n", "<space>f", function()
-            vim.lsp.buf.format { async = true }
+            vim.lsp.buf.format({ async = true })
         end, opts)
     end,
 })
 
--- Todo-comments setup (unchanged)
-require("todo-comments").setup {
+-- Todo-comments setup
+require("todo-comments").setup({
     keywords = {
         TODO = { icon = " ", color = "warning" },
     },
-}
+})

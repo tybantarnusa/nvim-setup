@@ -33,3 +33,5 @@ vim.api.nvim_create_autocmd({ 'VimEnter', 'VimLeave' }, {
 		end
 	end,
 })
+
+vim.o.autoread = true

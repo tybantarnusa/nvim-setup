@@ -43,7 +43,11 @@ vim.lsp.config("ts_ls", {
             },
         },
     },
+    on_init = function(client)
+        client.server_capabilities.documentFormattingProvider = false -- If you use another formatter
+    end,
 })
+vim.env.PATH = vim.fn.system("bash -lc 'nvm which 18'"):gsub("/bin/node\n", "/bin/") .. ":" .. vim.env.PATH
 
 vim.lsp.config("pyright", {
     settings = {
